@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="CannonBall" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the CannonBall wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="isGameLost()" condition-java="isGameLost()" enable="true">
+                    <ifStatements>
+                        <call expression="transitionToGameOver()" expression-java="transitionToGameOver()" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="boolean" type-java="boolean" name="isGameLost" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                <if condition="world.getObjects(Ladybug.class).isEmpty()" condition-java="world.getObjects(Ladybug.class).isEmpty()" enable="true">
+                    <ifStatements>
+                        <return value="true" value-java="true" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <return value="false" value-java="false" enable="true"/>
+                    </else>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="transitionToGameOver" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="gameOverWorld" value="new GameOverWorld()" value-java=" new GameOverWorld()" enable="true"/>
+                <call expression="Greenfoot.setWorld(gameOverWorld)" expression-java="Greenfoot.setWorld(gameOverWorld)" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>
